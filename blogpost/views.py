@@ -1,24 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-posts = [
-    {
-        'author': 'akhmad',
-        'title': 'blogpost1',
-        'content': 'kun.uz',
-        'pub_date': 'December 16, 2003',
-    },
-    {
-        'author': 'sardor',
-        'title': 'blogpost2',
-        'content': 'daryo.uz',
-        'pub_date': 'january 1, 2002',
-    },
-]
+from .models import Post
+# from django.views.generic import TemplateView
 
 
 def home(request):
     contexts = {
-        'posts': posts
+        'posts': Post.objects.all()
     }
     return render(request, 'blogpost/home.html', contexts)
 
